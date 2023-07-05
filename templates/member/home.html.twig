@@ -1,0 +1,15 @@
+{% extends 'member.html.twig' %}
+
+{% block text %}
+    <div class="container-fluid">
+        {%  for msg in app.session.flashbag.get('SUCCESS') %}
+            <div class="alert alert-success alert-dismissible fade show">
+                <div class="text-center"> {{ msg }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <h4 class="text-center mt-2">welkom {{ name.firstname }} {{ name.lastname }}<br> Hierboven kunt u zich inschrijven voor de lessen van Trainings Factory Den Haag</h4>
+    </div>
+{% endblock %}

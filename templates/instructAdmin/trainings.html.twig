@@ -1,0 +1,22 @@
+{% extends 'instruct.html.twig' %}
+
+{% block text %}
+<div class="container">
+    <p class="text-center mt-2">Welkom op de pagina waar u allerlei soorten trainingen kunt vinden en eventueel een nieuwe vorm kan toevoegen.</p>
+    <h6 class="text-center">Er zijn momenteel {{ trainings|length }} verschillende trainingen</h6>
+
+    <div class="row">
+            {% for training in trainings %}
+                <div class="card mx-1 mt-2 mb-3" style="width: 20rem;">
+                    <img src="{{ asset(training.image ) }}"><hr>
+                    <h6 class="text-center"><b>{{ training.title }}</b></h6>
+                    <div class="card-text text-black">{{ training.description }}</div>
+                     <div class="card-text text-center text-black"><hr>de training duurt {{ training.duration }} minuten</div><br>
+                    <button class="btn btn-warning mb-2"><a href="{{ path('training_update', {id: training.id })}}" class="text-decoration-none text-white">update</a></button>
+                    <button class="btn btn-danger "><a href="{{ path('training_delete', {id: training.id })}}" class="text-decoration-none text-white">delete</a></button>
+                </div>
+    {% endfor %}
+    </div>
+    <button class="btn btn-primary mb-2"><a href="{{ path('instruct_training_add') }}" class="text-white text-decoration-none">Trainingsvorm toevoegen</a></button>
+</div>
+{% endblock %}

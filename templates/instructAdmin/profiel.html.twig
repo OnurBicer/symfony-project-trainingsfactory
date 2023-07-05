@@ -1,0 +1,37 @@
+{% extends 'instruct.html.twig' %}
+
+{% block text %}
+    <div class="container">
+        <h4 class="text-center">Welkom beheerder<br> Op deze pagina kunt u uw gegevens checken en eventueel wijzigen</h4>
+        <div class="card mx-auto mt-3 mb-4" style="width: 25rem;">
+            <div class="card-title"><p class="text-center">Uw gegevens</p><hr></div>
+            <table>
+                <tr>
+                    <th scope="col">e-mailadres:</th>
+                    <td>{{ admin.email }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Voornaam:</th>
+                    <td>{{ admin.firstname }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Achternaam:</th>
+                    <td>{{ admin.lastname }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Startdatum:</th>
+                    <td>{{ admin.hiringdate| date ("d/m/y") }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Salaris:</th>
+                    <td>€ {{ admin.salary }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Bsn:</th>
+                    <td> {{ admin.socialsecnumber }}</td>
+                </tr>
+            </table>
+            <button class="btn btn-primary"><a href="{{ path('instruct_changeProfile') }}" class="text-white text-decoration-none">Wijzig gegevens</a></button>
+        </div>
+    </div>
+{% endblock %}

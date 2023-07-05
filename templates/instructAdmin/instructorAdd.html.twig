@@ -1,0 +1,17 @@
+{% extends 'instruct.html.twig' %}
+
+{% block text %}
+<div class="container mt-2">
+
+    {{ form(form) }}
+
+</div>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'dd-mm-yyyy'
+            });
+        });
+    </script>
+{% endblock %}

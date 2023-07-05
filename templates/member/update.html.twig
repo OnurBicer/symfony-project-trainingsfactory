@@ -1,0 +1,16 @@
+{% extends 'member.html.twig' %}
+
+{% block text %}
+    <div class="container">
+        {{ form(form) }}
+
+        <a href="{{ path('member_profile') }}" class="text-decoration-none text-black link">Terug naar mijn profiel</a>
+    </div>
+
+    <style>
+        .link:hover{
+            color: #38723c;
+            background-color: #6fc278;
+        }
+    </style>
+{% endblock %}

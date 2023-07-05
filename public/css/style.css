@@ -1,0 +1,98 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+*,*::before,*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background: black;
+}
+
+.nav-link {
+    color: rgba(245, 245, 245, 0.6) !important;
+    font-size: 24px!important;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: whitesmoke!important;
+    transition: all 0.5s;
+}
+
+.nav-link:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    bottom: -4px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 50%;
+    background: green;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+}
+
+.nav-link:hover:after {
+    width: 80%;
+    background: orange;
+}
+
+.bi-border-width {
+    color: whitesmoke!important;
+}
+
+.card {
+    border-radius: unset!important;
+}
+
+.footer {
+    background-color: black!important;
+    color: whitesmoke!important;
+    border: none!important;
+}
+
+.card-header {
+    border-color: whitesmoke!important;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.card-title {
+    font-size: 24px;
+}
+
+.card-text {
+    color: rgba(245, 245, 245, 0.8);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.text-time {
+    color: rgba(245, 245, 245, 0.6);
+}
+
+.card-footer {
+    border-color: whitesmoke!important;
+}
+
+.card-footer-link {
+    font-size: 20px;
+}
+
+.card-footer-link:hover {
+    color: whitesmoke!important;
+    transition: all 0.3s!important;
+}
+

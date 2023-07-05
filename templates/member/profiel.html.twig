@@ -1,0 +1,67 @@
+{% extends 'member.html.twig' %}
+
+{% block text %}
+    <div class="container">
+        <h4 class="text-center">Welkom member<br> Op deze pagina kunt u uw gegevens checken en eventueel wijzigen</h4>
+        <div class="row">
+        <div class="card mt-3" style="width: 22rem;">
+            <div class="card-title"><p class="text-center">Uw gegevens</p><hr></div>
+        <table>
+            <tr>
+                <th scope="col">e-mailadres:</th>
+                <td>{{ member.email }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Voornaam:</th>
+                <td>{{ member.firstname }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Achternaam:</th>
+                <td>{{ member.lastname }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Adres:</th>
+                <td>{{ member.street }}</td>
+            </tr>
+            <tr>
+                <th scope="col">Plaats:</th>
+                <td>{{ member.place }}</td>
+            </tr>
+        </table>
+        <button class="btn btn-primary"><a href="{{ path('member_changeProfile') }}" class="text-white text-decoration-none">Wijzig gegevens</a></button>
+        </div>
+
+
+        <div class="card mt-3 mx-auto" style="width: 30rem;">
+            <div class="card-title"><p class="text-center">Uw lessen</p><hr></div>
+            {% for les in lessen %}
+                <tr>
+                    <th scope="col">Locatie:</th>
+                    <td>{{ les.lesson.location }}</td><br>
+                </tr>
+                <tr>
+                    <th scope="col">Training:</th>
+                    <td>{{ les.lesson.training }}</td><br>
+                </tr>
+                <tr>
+                    <th scope="col">Datum:</th>
+                    <td>{{ les.lesson.date|date ("d/m/Y")}}</td><br>
+                </tr>
+                <tr>
+                    <th scope="col">Tijd:</th>
+                    <td>{{ les.lesson.time|date ("H:i")}}</td><br>
+                </tr>
+                <tr>
+                    <th scope="col">Instructeur:</th>
+                    <td>{{ les.lesson.instructor.firstname }} {{ les.lesson.instructor.lastname }}<br></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-danger"><a href="{{ path('member_deleteLesson', {id: les.id })}}" class="text-decoration-none text-white">uitschrijven</a></button></td>
+                </tr>
+                <hr>
+            {% endfor %}
+            </table>
+        </div>
+        </div>
+    </div>
+{% endblock %}

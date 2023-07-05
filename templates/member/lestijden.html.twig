@@ -1,0 +1,30 @@
+{% extends 'member.html.twig' %}
+
+{% block text %}
+    <div class="container">
+        <h4 class="text-center mt-2">welkom lid<br>Hieronder kunt u de lestijden zien voor de door u gekozen training.</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Training</th>
+                <th scope="col">Datum</th>
+                <th scope="col">Tijd</th>
+                <th scope="col">Locatie</th>
+                <th scope="col">Maximale hoeveelheid (pers)</th>
+                <th scope="col">Instructeur</th>
+            </tr>
+            </thead>
+            {% for les in lessen %}
+                <tr>
+                    <td>{{ les.training.title }}</td>
+                    <td>{{ les.date | date("d/m/Y")}}</td>
+                    <td>{{ les.time | date("H:i") }}</td>
+                    <td>{{ les.location }}</td>
+                    <td>{{ les.maxpersons }}</td>
+                    <td>{{ les.instructor.firstname }} {{ les.instructor.lastname }}</td>
+                    <td><button class="btn btn-primary"><a href="{{ path('member_add', {id: les.id })}}" class="text-decoration-none text-white">Inschrijven</a></button></td>
+            </tr>
+            {% endfor %}
+            <tbody>
+    </div>
+{% endblock %}

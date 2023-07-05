@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block text %}
+    <div class="container mt-3">
+        <h5 class="text-center">Welkom instructeur op deze pagina kunt u de deelnemers voor de les {{ deelnemers.training.title }} zien</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Voornaam</th>
+                <th scope="col">Achternaam</th>
+                <th scope="col">Betaald</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for deelnemer in deelnemers.registration %}
+
+                    <td>{{ deelnemer.user.firstname }}</td>
+                    <td>{{ deelnemer.user.lastname }}</td>
+                    <td> € {{ deelnemer.payment }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <br>
+        </table>
+    </div>
+{% endblock %}

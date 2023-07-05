@@ -1,0 +1,34 @@
+{% extends 'instruct.html.twig' %}
+
+{% block text %}
+    <div class="container mt-2">
+        <h5 class="text-center mt-2 mb-3">Welkom administrator op de pagina waarop u de leden van de sportschool kan bekijken, aanpassen en verwijderen</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">e-mailadres</th>
+                <th scope="col">voornaam</th>
+                <th scope="col">achternaam</th>
+                <th scope="col">startdatum</th>
+                <th scope="col">salaris</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for instructeur in instructeurs %}
+            <tr
+            >
+                <td>{{ instructeur.email }}</td>
+                <td>{{ instructeur.firstname }}</td>
+                <td>{{ instructeur.lastname }}</td>
+                <td>{{ instructeur.hiringdate|date ("d/m/Y") }}</td>
+                <td>€ {{ instructeur.salary }}</td>
+                <td><button class="btn btn-warning"><a href="{{ path('instructAdmin_instructor_update', {id: instructeur.id })}}" class="text-decoration-none text-black">update</a></button></td>
+                <td><button class="btn btn-danger"><a href="{{ path('instructAdmin_instructor_delete', {id: instructeur.id })}}" class="text-decoration-none text-white">delete</a></button></td>
+                {% endfor %}
+            </tr>
+            <td><button class="btn btn-primary"><a href="{{ path('instructAdmin_instructor_add')}}" class="text-decoration-none text-white">instructeur toevoegen</a></button></td>
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

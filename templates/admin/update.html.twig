@@ -1,0 +1,10 @@
+{% extends 'admin.html.twig' %}
+
+{% block text %}
+
+  <div class="container mt-2">
+    {{ form(form) }}
+
+    <br><button class="btn btn-warning mb-2"><a href="{{ path('admin_lesson') }}" class="text-black text-decoration-none">Terug naar overzicht</a></button>
+  </div>
+{% endblock %}

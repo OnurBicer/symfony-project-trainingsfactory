@@ -1,0 +1,71 @@
+{% extends 'admin.html.twig' %}
+
+
+{% block text %}
+    <div class="container">
+    <h4 class="text-center">Welkom {{ name.firstname }} {{ name.lastname }}<br> Op deze pagina kunt u uw lessen zien</h4>
+    <br>
+    <div class="card mx-auto" style="width: 16rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Legenda voor trainingen:</h5>
+            <p class="next">Moet nog gebeuren</p>
+            <p class="over">Datum al geweest</p>
+            <p class="now">Gebeurt vandaag</p>
+        </div>
+    </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Training</th>
+                <th scope="col">Datum</th>
+                <th scope="col">Tijd</th>
+                <th scope="col">Locatie</th>
+                <th scope="col">Maximale hoeveelheid (pers)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for les in lesson %}
+                <tr
+                        {% if date(les.date|date("Y-m-d")) < date("now"|date ("Y-m-d")) %}
+                            class="over"
+                        {% endif %}
+                        {% if date(les.date|date("d-m-Y")) > date("now"|date ("d-m-Y")) %}
+                            class="next"
+                        {% endif %}
+                        {% if les.date|date("d-m-Y") == "now"|date ("d-m-Y") %}
+                            class="now"
+                        {% endif %}
+                >
+                    <td>{{ les.training.title }}</td>
+                    <td>{{ les.date | date("d/m/Y")}}</td>
+                    <td>{{ les.time | date("H:i") }}</td>
+                    <td>{{ les.location }}</td>
+                    <td>{{ les.maxpersons }}</td>
+                    <td><a href="{{ path('admin_lesson_participate', {id: les.id })}}" class="text-decoration-none text-black hover">deelnemers</a></td>
+                    <td><a href="{{ path('lesson_edit', {id: les.id })}}" class="text-decoration-none text-black">update</a></td>
+                    <td><a href="{{ path('delete_lesson', {id: les.id })}}" class="text-decoration-none text-black">delete</a></td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        <br>
+        </table>
+    <button class="btn btn-primary mb-2"><a href="{{ path('lesson_add') }}" class="text-white text-decoration-none">Les toevoegen</a></button>
+    </div>
+    <style>
+     .now{
+         background-color: #6fc278;
+     }
+     .hover:hover{
+         color: green;
+         background-color: #AAAAAA;
+     }
+     .next{
+         background-color: #fff86d;
+     }
+     .over{
+         background-color: #ff594b;
+     }
+    </style>
+{% endblock %}

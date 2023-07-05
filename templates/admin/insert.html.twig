@@ -1,0 +1,17 @@
+{% extends 'admin.html.twig' %}
+
+{% block text %}
+    <div class="container">
+        <h4 class="text-center mt-2">Hier kunt u een les aan uw schema toevoegen.</h4>
+
+        {{ form(form) }}
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'dd-mm-yyyy'
+            });
+        });
+    </script>
+{% endblock %}

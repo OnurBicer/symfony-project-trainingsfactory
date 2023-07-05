@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+
+    {% block text %}
+        <div class="container-fluid m-0 p-0">
+            <div class="card training-card border-start-0 border-end-0">
+                <img src="{{ asset('img/home-background.jpg') }}" class="card-img training-background" alt="training-background">
+                <div class="card-img-overlay text-center">
+                    <h5 class="card-title text-light training-background-title">Welkom op de homepagina van Trainings Factory Den Haag,<br> hieronder kunt u onze gedragsregels en contactgegevens met openingstijden vinden. </h5>
+                    <p class="card-text training-background-text">Onze gedragsregels bij Trainings Factory:</p>
+                    <p class="card-text training-background-text">- ga respectvol met elkaar om</p>
+                    <p class="card-text training-background-text">- gebruik speciale sportschoenen in het gebouw</p>
+                    <p class="card-text training-background-text">- houd de apparaten schoon achter</p>
+                    <p class="card-text training-background-text">- pesten of schelden wordt hier niet getolereerd</p>
+                    <p class="card-text training-background-text">- sport met plezier</p>
+                    {%  for msg in app.session.flashbag.get('SUCCESS') %}
+                        <div class="alert alert-dismissible fade show mt-5">
+                            <div class="text-center text-danger alert-text"> {{ msg }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <style>
+            .training-card {
+                background-color: black;
+            }
+
+            .training-background {
+                width: 95vw !important;
+                height: 100vh!important;
+                border-radius: unset!important;
+                opacity: 0.3;
+                margin: auto;
+            }
+
+            .training-background-title {
+                font-size: 16px;
+                font-weight: bold;
+                margin-top: 75px;
+            }
+
+            .training-background-text {
+                font-size: 24px;
+                color: whitesmoke;
+                width: 700px;
+                margin: 0 auto;
+            }
+
+            .alert-dismissible {
+                border-radius: unset!important;
+                background-color: unset!important;
+            }
+
+            .alert-text {
+                font-size: 30px;
+            }
+        </style>
+    {% endblock %}

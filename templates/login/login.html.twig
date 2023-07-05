@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block text %}
+<div class="container mt-3">
+    {% if error %}
+       <div class="text-center mb-3">{{ error.messageKey|trans (error.messageData, 'security') }}</div>
+    {% endif %}
+        <h6 class="text-center">Hier kunt u met uw gemaakte account inloggen om zo voor lessen in te schrijven</h6><br>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+    <form action="{{ path('login') }}" method="post">
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+        <br>
+        <label for="password" class="mt-2">Password:</label>
+        <input type="password" id="password" name="_password"/>
+        <input type="hidden" name="_target_path" value="/redirect"/>
+        <br>
+        <button class="btn btn-primary mt-1 mb-3" type="submit">login</button>
+    </form>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'instruct.html.twig' %}
+
+{% block text %}
+<div class="container mt-2">
+
+    {{ form(form) }}
+
+    <button class="btn btn-secondary mb-3"><a href="{{ path('instructAdmin_member') }}" class="text-decoration-none text-white">Terug naar ledenoverzicht</a></button>
+</div>
+{% endblock %}

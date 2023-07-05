@@ -1,0 +1,44 @@
+{% extends 'instruct.html.twig' %}
+
+{% block text %}
+<div class="container">
+<h5 class="text-center">Welkom op deze pagina kunt u alle lessen zien die er gegeven worden in Trainings Factory Den Haag</h5><br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Training</th>
+            <th scope="col">Tijd</th>
+            <th scope="col">Datum</th>
+            <th scope="col">Locatie</th>
+            <th scope="col">Maximale hoeveelheid (pers)</th>
+            <th scope="col">Instructeur</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for les in lessons %}
+
+            <tr
+                    {% if date(les.date|date("Y-m-d")) < date("now"|date ("Y-m-d")) %}
+                        class="over"
+                    {% endif %}
+                    {% if date(les.date|date("d-m-Y")) > date("now"|date ("d-m-Y")) %}
+                        class="next"
+                    {% endif %}
+                    {% if les.date|date("d-m-Y") == "now"|date ("d-m-Y") %}
+                        class="now"
+                    {% endif %}
+            >
+                <td>{{ les.training.title }}</td>
+                <td>{{ les.time|date ("H:i")}}</td>
+                <td>{{ les.date|date ("d/m/Y") }}</td>
+                <td>{{ les.location }}</td>
+                <td>{{ les.maxpersons }}</td>
+                <td>{{ les.instructor.firstname }} {{ les.instructor.lastname }}</td>
+                <td><button class="btn btn-warning"><a href="{{ path('instruct_lesson_update', {id: les.id })}}" class="text-decoration-none text-black">update</a></button></td>
+                <td><button class="btn btn-danger"><a href="{{ path('lesson_delete', {id: les.id })}}" class="text-decoration-none text-white">delete</a></button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
